@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player.Movement
+namespace Player.Controls
 {
     [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
     public class PlayerMovement : MonoBehaviour
@@ -33,7 +33,7 @@ namespace Player.Movement
         [Header("Look")] 
         [SerializeField] private float lookSensitivity = 1f;
         [SerializeField] private float lookSmooth = 10f;
-        [SerializeField] private bool invertY = false;
+        [SerializeField] private bool invertY;
         [SerializeField] private float pitchMin = -70f;
         [SerializeField] private float pitchMax = 80f;
 
@@ -103,7 +103,7 @@ namespace Player.Movement
 
             HandleLook();
 
-            Vector2 rawMove = _moveAction != null ? _moveAction.ReadValue<Vector2>() : Vector2.zero;
+            Vector2 rawMove = _moveAction?.ReadValue<Vector2>() ?? Vector2.zero;
             bool sprinting = _sprintAction != null && _sprintAction.IsPressed();
             bool crouchPressed = _crouchAction != null && _crouchAction.WasPressedThisFrame();
 
