@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class NailMinigame : MonoBehaviour
@@ -44,6 +45,8 @@ public class NailMinigame : MonoBehaviour
             {
                 Debug.Log("You hammered all of the nails!");
                 nailGameWidget.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             else
             {
