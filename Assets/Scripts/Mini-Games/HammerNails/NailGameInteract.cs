@@ -6,6 +6,7 @@ public class NailGameInteract : MonoBehaviour
     [SerializeField] InputActionAsset inputs;
     InputAction interact;
 
+    [SerializeField] NailMinigame minigame;
     [SerializeField] GameObject promptText;
     [SerializeField] GameObject nailGameWidget;
 
@@ -37,8 +38,10 @@ public class NailGameInteract : MonoBehaviour
             {
                 promptText.SetActive(false);
                 nailGameWidget.SetActive(true);
+                minigame.BeginMinigame();
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
+                Time.timeScale = 0;
             }
         }
     }

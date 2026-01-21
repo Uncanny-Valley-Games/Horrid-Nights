@@ -1859,6 +1859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputs: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  minigame: {fileID: 1631278652}
   promptText: {fileID: 1220283374}
   nailGameWidget: {fileID: 736897160}
 --- !u!65 &1308201836
