@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class NailMinigame : MonoBehaviour
 {
     [SerializeField] GameObject nailGameWidget;
+    [SerializeField] TextMeshProUGUI nailGameText;
 
     // Button variables
     [SerializeField] Button nail1;
@@ -18,13 +19,15 @@ public class NailMinigame : MonoBehaviour
     int nailsToLoosen = 0;
 
     // Timer variables
-    float nailTime = 2.5f;
+    float nailTime = 2.0f;
     bool startedNailTimer;
-    float lossTime = 4.0f;
+    float lossTime = 3.0f;
     bool startedLossTimer;    
 
     void Start()
     {
+        nailGameText.text = "Hammer the nails!";
+
         BeginMinigame();
     }
 
@@ -35,6 +38,7 @@ public class NailMinigame : MonoBehaviour
             // Checks if all of the nail buttons are interactable, or loose
             if (nail1.interactable && nail2.interactable && nail3.interactable && nail4.interactable && nail5.interactable && nail6.interactable)
             {
+                StopCoroutine(NailTimer());
                 startedNailTimer = false;
 
                 if (!startedLossTimer)
@@ -45,9 +49,9 @@ public class NailMinigame : MonoBehaviour
             // Checks if all of the nail buttons are not interactable, or fixed
             else if (!nail1.interactable && !nail2.interactable && !nail3.interactable && !nail4.interactable && !nail5.interactable && !nail6.interactable)
             {
+                StopCoroutine(NailTimer());
                 startedNailTimer = false;
 
-                Debug.Log("You hammered all of the nails!");
                 nailGameWidget.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -71,6 +75,8 @@ public class NailMinigame : MonoBehaviour
 
     public void BeginMinigame()
     {
+        nailsToLoosen = 0;
+
         HammerNail(nail1);
         HammerNail(nail2);
         HammerNail(nail3);
@@ -78,9 +84,31 @@ public class NailMinigame : MonoBehaviour
         HammerNail(nail5);
         HammerNail(nail6);
 
-        LoosenNail(nail2);
-        LoosenNail(nail4);
-        LoosenNail(nail5);
+        // A random number is chosen to loosen different nails when the minigame starts
+        int randNum = Random.Range(0, 4);
+        switch (randNum)
+        {
+            case 0:
+                LoosenNail(nail1);
+                LoosenNail(nail3);
+                LoosenNail(nail5);
+                break;
+            case 1:
+                LoosenNail(nail2);
+                LoosenNail(nail4);
+                LoosenNail(nail6);
+                break;
+            case 2:
+                LoosenNail(nail1);
+                LoosenNail(nail2);
+                LoosenNail(nail5);
+                break;
+            default:
+                LoosenNail(nail3);
+                LoosenNail(nail4);
+                LoosenNail(nail6);
+                break;
+        }
     }
 
     void LoosenNail(Button nail)
@@ -118,8 +146,8 @@ public class NailMinigame : MonoBehaviour
                     nailsToLoosen++;
                     break;
                 default:
-                    LoosenNail(nail3);
                     LoosenNail(nail4);
+                    LoosenNail(nail5);
                     nailsToLoosen = 0;
                     break;
             }
@@ -133,7 +161,7 @@ public class NailMinigame : MonoBehaviour
         yield return new WaitForSecondsRealtime(lossTime);
         if (startedLossTimer)
         {
-            Debug.Log("The monster got inside! Game over!");
+            nailGameText.text = "The monster got inside! Game over!";
         }
     }
 }

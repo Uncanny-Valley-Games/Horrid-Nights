@@ -2494,6 +2494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nailGameWidget: {fileID: 736897160}
+  nailGameText: {fileID: 1713853990}
   nail1: {fileID: 8165195}
   nail2: {fileID: 1834901413}
   nail3: {fileID: 865061525}
