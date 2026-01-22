@@ -10,7 +10,7 @@ namespace Player.Controls
         [SerializeField] private PlayerInput playerInput;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private CharacterController controller;
-        [SerializeField] private Transform bodyTransform; //visual/model transform to rotate instead of the root
+        [SerializeField] private Transform bodyTransform; 
 
         [Header("Speeds")] 
         [SerializeField] private float walkSpeed = 4f;
