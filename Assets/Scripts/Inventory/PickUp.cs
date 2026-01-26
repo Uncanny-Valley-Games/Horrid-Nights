@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Inventory
 {
-    public class ItemizedObject : MonoBehaviour
+    public class PickUp : MonoBehaviour
     {
         
     }
