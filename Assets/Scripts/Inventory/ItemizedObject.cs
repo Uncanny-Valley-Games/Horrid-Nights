@@ -1,36 +1,16 @@
 using UnityEngine;
 
-namespace Inventory
+public class ItemizedObject : MonoBehaviour
 {
-    public class ItemizedObject : MonoBehaviour
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        private string itemName;
-        private GameObject prefab;
+        
+    }
 
-        public GameObject GetPrefab()
-        {
-            return prefab;
-        }
-
-        private void SetPrefab(GameObject prefab)
-        {
-            this.prefab = prefab;
-        }
-
-        public string GetItemName()
-        {
-            return itemName;
-        }
-
-        public void SetItemName(string itemName)
-        {
-            this.itemName = itemName;
-        }
-
-        private void OnUse()
-        {
-            // do something (must be overwritten by the child class)
-        }
+    // Update is called once per frame
+    void Update()
+    {
         
     }
 }
