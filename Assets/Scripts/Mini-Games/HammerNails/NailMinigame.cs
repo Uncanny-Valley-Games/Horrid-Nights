@@ -93,16 +93,19 @@ public class NailMinigame : MonoBehaviour
                 LoosenNail(nail3);
                 LoosenNail(nail5);
                 break;
+
             case 1:
                 LoosenNail(nail2);
                 LoosenNail(nail4);
                 LoosenNail(nail6);
                 break;
+
             case 2:
                 LoosenNail(nail1);
                 LoosenNail(nail2);
                 LoosenNail(nail5);
                 break;
+
             default:
                 LoosenNail(nail3);
                 LoosenNail(nail4);
@@ -140,11 +143,13 @@ public class NailMinigame : MonoBehaviour
                     LoosenNail(nail3);
                     nailsToLoosen++;
                     break;
+
                 case 1:
                     LoosenNail(nail2);
                     LoosenNail(nail6);
                     nailsToLoosen++;
                     break;
+
                 default:
                     LoosenNail(nail4);
                     LoosenNail(nail5);
