@@ -5,7 +5,7 @@ public class CabinDamage : MonoBehaviour
 {
     [SerializeField] GameObject[] windows;
 
-    [SerializeField] float timeBetweenAttacks = 10f;
+    [SerializeField] float timeBetweenAttacks = 8f;
     bool tryingToAttack;
 
     void Update()
@@ -18,8 +18,6 @@ public class CabinDamage : MonoBehaviour
 
     void DamageWindow()
     {
-        Debug.Log("The monster attacked one of the windows!");
-        
         // Gets a random number to damage one of the windows in the array
         int randNum = Random.Range(0, windows.Length);
         windows[randNum].GetComponent<WindowBarricade>().WindowDamaged();

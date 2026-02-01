@@ -7,6 +7,11 @@ public class WindowBarricade : MonoBehaviour
 
     bool isDamaged = false;
 
+    public bool GetIsDamaged()
+    {
+        return isDamaged;
+    }
+
     void Start()
     {
         GetComponent<Renderer>().material.color = normalColour;

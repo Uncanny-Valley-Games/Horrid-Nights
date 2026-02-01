@@ -33,15 +33,19 @@ public class NailGameInteract : MonoBehaviour
     {
         if (playerIsNear)
         {
-            // The minigame will only start when the interact key is pressed if the player is next to the window
-            if (interact.WasPressedThisFrame())
+            // The minigame will only start when the interact key is pressed if the player is next to the window and it's damaged
+            if (interact.WasPressedThisFrame() && GetComponentInParent<WindowBarricade>().GetIsDamaged())
             {
                 promptText.SetActive(false);
                 nailGameWidget.SetActive(true);
-                minigame.BeginMinigame();
+                minigame.BeginMinigame(gameObject);
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
                 Time.timeScale = 0;
+            }
+            else if (interact.WasPressedThisFrame() && !GetComponentInParent<WindowBarricade>().GetIsDamaged())
+            {
+                Debug.Log("This window doesn't need to be repaired.");
             }
         }
     }
