@@ -178,7 +178,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2697962367493232873, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1847422971}
   m_SourcePrefab: {fileID: 100100000, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
 --- !u!1 &1086124333
 GameObject:
@@ -564,6 +567,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1847422962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2697962367493232873, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
+  m_PrefabInstance: {fileID: 79412030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1847422971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847422962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da30b7c2679558eb8679fea566f2c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropBoxPrefab: {fileID: 4359091241879076072, guid: 3993c69cdfa4eed488bbe2c0ea8d967d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
