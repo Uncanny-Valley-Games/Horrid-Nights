@@ -2,11 +2,13 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NailMinigame : MonoBehaviour
 {
     [SerializeField] GameObject nailGameWidget;
     [SerializeField] TextMeshProUGUI nailGameText;
+    GameObject currentWindow;
 
     // Button variables
     [SerializeField] Button nail1;
@@ -27,8 +29,6 @@ public class NailMinigame : MonoBehaviour
     void Start()
     {
         nailGameText.text = "Hammer the nails!";
-
-        BeginMinigame();
     }
 
     void Update()
@@ -52,10 +52,9 @@ public class NailMinigame : MonoBehaviour
                 StopCoroutine(NailTimer());
                 startedNailTimer = false;
 
-                nailGameWidget.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                Time.timeScale = 1;
+                EndMinigame();
+
+                currentWindow.GetComponentInParent<WindowBarricade>().WindowFixed();
             }
             else
             {
@@ -73,8 +72,10 @@ public class NailMinigame : MonoBehaviour
         }
     }
 
-    public void BeginMinigame()
+    public void BeginMinigame(GameObject window)
     {
+        // Assigns the given input as the current window game object
+        currentWindow = window;
         nailsToLoosen = 0;
 
         HammerNail(nail1);
@@ -93,22 +94,33 @@ public class NailMinigame : MonoBehaviour
                 LoosenNail(nail3);
                 LoosenNail(nail5);
                 break;
+
             case 1:
                 LoosenNail(nail2);
                 LoosenNail(nail4);
                 LoosenNail(nail6);
                 break;
+
             case 2:
                 LoosenNail(nail1);
                 LoosenNail(nail2);
                 LoosenNail(nail5);
                 break;
+
             default:
                 LoosenNail(nail3);
                 LoosenNail(nail4);
                 LoosenNail(nail6);
                 break;
         }
+    }
+
+    void EndMinigame()
+    {
+        nailGameWidget.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
     }
 
     void LoosenNail(Button nail)
@@ -140,11 +152,13 @@ public class NailMinigame : MonoBehaviour
                     LoosenNail(nail3);
                     nailsToLoosen++;
                     break;
+
                 case 1:
                     LoosenNail(nail2);
                     LoosenNail(nail6);
                     nailsToLoosen++;
                     break;
+
                 default:
                     LoosenNail(nail4);
                     LoosenNail(nail5);
@@ -162,6 +176,8 @@ public class NailMinigame : MonoBehaviour
         if (startedLossTimer)
         {
             nailGameText.text = "The monster got inside! Game over!";
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            EndMinigame();
         }
     }
 }
