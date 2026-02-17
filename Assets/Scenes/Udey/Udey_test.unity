@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 213504658}
   - component: {fileID: 213504657}
   - component: {fileID: 213504656}
+  - component: {fileID: 213504661}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -392,6 +393,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &213504661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213504655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b31591861348e9469ae2cdb498f1726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1912011149}
+  cabin: {fileID: 621658546}
+  spawnState: 0
+  spawnDistanceMin: 30
+  spawnDistanceMax: 60
+  preChaseLurkDuration: 10
+  lurkMinDistanceToPlayer: 8
+  lurkMaxDistanceToPlayer: 20
+  lurkMoveInterval: 3
+  lurkSpeed: 2
+  chaseSpeed: 5
+  killDistance: 1.5
+  cabinEnterDistance: 3
+  escapeDistanceFromCabin: 80
+  despawnDistance: 120
+  escapeSpeed: 6
 --- !u!1 &243058243
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +729,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1912011149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 113217820905209375, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
+  m_PrefabInstance: {fileID: 644955573308872504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &644955573308872504
 PrefabInstance:
   m_ObjectHideFlags: 0
