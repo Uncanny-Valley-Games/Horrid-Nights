@@ -10,7 +10,8 @@ namespace Player.Controls
         [SerializeField] private PlayerInput playerInput;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private CharacterController controller;
-        [SerializeField] private Transform bodyTransform; 
+        [SerializeField] private Transform bodyTransform;
+        [SerializeField] private PlayerStamina playerStamina;
 
         [Header("Speeds")] 
         [SerializeField] private float walkSpeed = 4f;
@@ -226,7 +227,16 @@ namespace Player.Controls
             else targetDir = Vector3.zero;
 
             float baseSpeed = walkSpeed;
-            if (sprinting && !_isCrouched) baseSpeed *= sprintMultiplier;
+            if (sprinting && !_isCrouched && playerStamina.GetCurrentStamina() > 0f)
+            {
+                baseSpeed *= sprintMultiplier;
+                playerStamina.SetIsSprinting(true);
+            }
+            else
+            {
+                playerStamina.SetIsSprinting(false);
+            }
+
             if (_isCrouched) baseSpeed *= crouchSpeedMultiplier;
 
             float targetSpeed = baseSpeed * targetMagnitude;
