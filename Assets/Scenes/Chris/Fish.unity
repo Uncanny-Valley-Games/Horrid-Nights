@@ -1358,6 +1358,7 @@ GameObject:
   - component: {fileID: 880754261}
   - component: {fileID: 880754260}
   - component: {fileID: 880754262}
+  - component: {fileID: 880754263}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -1378,9 +1379,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStamina
   staminaSlider: {fileID: 627320031}
-  maxStamina: 100
-  lossRate: 25
-  recoveryRate: 15
+  initialMaxStamina: 100
+  lossRate: 40
+  recoveryRate: 20
 --- !u!4 &880754261
 Transform:
   m_ObjectHideFlags: 0
@@ -1410,6 +1411,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   healthSlider: {fileID: 854024234}
   maxHealth: 100
+--- !u!114 &880754263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880754259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bf0b18c5ba0ac4292bce2b321d785c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFoodAndWater
+  maxHunger: 50
+  maxThirst: 50
 --- !u!1 &1083533859
 GameObject:
   m_ObjectHideFlags: 0
