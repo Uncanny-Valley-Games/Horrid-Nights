@@ -388,6 +388,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da30b7c2679558eb8679fea566f2c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  maxDistance: 5
+  inventoryItemLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  headTransform: {fileID: 4440549343363400764}
+  handObject: {fileID: 8269105281379292941}
+  playerInput: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &8190803007793915390
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +502,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 2

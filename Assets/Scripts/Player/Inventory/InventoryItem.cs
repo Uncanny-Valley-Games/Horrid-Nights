@@ -12,10 +12,10 @@ public class InventoryItem : MonoBehaviour
     }
     
     public ItemName itemName;
-    public Collider collider;
+    public Collider itemCollider;
 
     private Rigidbody _rb;
-    private Transform _myTransform;
+    private GameObject handObject;
     
     private bool _isEquipped;
     
@@ -24,34 +24,38 @@ public class InventoryItem : MonoBehaviour
         return _isEquipped;
     }
     
-    void Start()
+    private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _myTransform = GetComponent<Transform>();
         _rb.isKinematic = true; // starts as a static object, then switches to ridged once dropped
-        collider.isTrigger = false;
-        _myTransform = transform;
+        itemCollider.isTrigger = false;
     }
 
-    
-    void Update()
+    private void Update()
     {
-        
+        if (handObject is not null)
+        {
+            transform.position = handObject.transform.position;
+            transform.rotation = handObject.transform.rotation;
+        }
     }
 
-    public void PickUp(Transform equipTransform)
+    public void PickUp(GameObject hand)
     {
         _isEquipped = true;
         _rb.isKinematic = true;
-        collider.isTrigger = true;
-        _myTransform.position = equipTransform.position;
+        itemCollider.isTrigger = true;
+        gameObject.layer = LayerMask.NameToLayer("Default");
+        handObject = hand;
     }
 
     public void Drop()
     {
         _isEquipped = false;
         _rb.isKinematic = false;
-        collider.isTrigger = false;
+        itemCollider.isTrigger = false;
+        gameObject.layer = LayerMask.NameToLayer("Inventory Item");
+        handObject = null;
     }
 
     public void Equip()
