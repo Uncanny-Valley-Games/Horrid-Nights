@@ -1,12 +1,7 @@
-using System.ComponentModel;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class InventoryItem : MonoBehaviour
 {
-    [Category("Inventory Item")]
-    [SerializeField] private string name;
-    [SerializeField] private GameObject prefab;
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

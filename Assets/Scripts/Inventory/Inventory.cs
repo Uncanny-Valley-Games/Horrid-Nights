@@ -2,17 +2,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private GameObject dropBoxPrefab;
-    
-    private const int INVENTORY_SIZE = 3;
-    
-    private InventoryItem[] items = new InventoryItem[INVENTORY_SIZE]; // can hold a maximum of 3 items
-    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
 
+    // Update is called once per frame
     void Update()
     {
         
