@@ -650,8 +650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6351c310ce3f703b778a84ee7b4dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
-  itemName: 0
-  _collider: {fileID: 0}
+  itemName: 1
+  collider: {fileID: 428042560}
 --- !u!1 &459210466
 GameObject:
   m_ObjectHideFlags: 0
