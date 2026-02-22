@@ -171,10 +171,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6328122835640086217, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 7380629934141247744, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
       propertyPath: playerStamina
       value: 
