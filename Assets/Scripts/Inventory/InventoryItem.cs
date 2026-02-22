@@ -14,8 +14,10 @@ public class InventoryItem : MonoBehaviour
     public Collider _collider;
 
     private Rigidbody _rb;
+    private Transform myTransform;
+    
     private bool isEquipped;
-
+    
     public bool IsEquipped()
     {
         return isEquipped;
@@ -24,7 +26,10 @@ public class InventoryItem : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        myTransform = GetComponent<Transform>();
         _rb.isKinematic = true; // starts as a static object, then switches to ridgid once dropped
+        _collider.isTrigger = false;
+        myTransform = transform;
     }
 
     
@@ -33,9 +38,18 @@ public class InventoryItem : MonoBehaviour
         
     }
 
+    public void Equip(Transform equipTransform)
+    {
+        isEquipped = true;
+        _rb.isKinematic = true;
+        _collider.isTrigger = true;
+        myTransform.position = equipTransform.position;
+    }
+
     public void Drop()
     {
         isEquipped = false;
         _rb.isKinematic = false;
+        _collider.isTrigger = false;
     }
 }
