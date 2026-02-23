@@ -10,10 +10,10 @@ public class Inventory : MonoBehaviour
     public GameObject handObject;
     public InputActionAsset playerInput;
     
-    private InputAction interact;
-    private InputAction dropItem;
-    private InputAction nextItem;
-    private InputAction previousItem;
+    private InputAction _interact;
+    private InputAction _dropItem;
+    private InputAction _nextItem;
+    private InputAction _previousItem;
     
     private InventoryItem[] _items = new InventoryItem[5];
     
@@ -32,28 +32,28 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        interact = InputSystem.actions.FindAction("Interact");
-        dropItem = InputSystem.actions.FindAction("Drop");
-        nextItem = InputSystem.actions.FindAction("Next");
-        previousItem = InputSystem.actions.FindAction("Previous");
+        _interact = InputSystem.actions.FindAction("Interact");
+        _dropItem = InputSystem.actions.FindAction("Drop");
+        _nextItem = InputSystem.actions.FindAction("Next");
+        _previousItem = InputSystem.actions.FindAction("Previous");
     }
 
     // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
-        if (interact.WasPressedThisFrame())
+        if (_interact.WasPressedThisFrame())
         {
             if (Physics.Raycast(headTransform.position, headTransform.forward, out hit, maxDistance, 
                     inventoryItemLayerMask)) 
                 Pickup(hit.transform.GetComponent<InventoryItem>());
-        } else if (dropItem.WasPressedThisFrame())
+        } else if (_dropItem.WasPressedThisFrame())
         {
             DropCurrentItem();
-        } else if (nextItem.WasPressedThisFrame())
+        } else if (_nextItem.WasPressedThisFrame())
         {
             CycleItems();
-        } else if (previousItem.WasPressedThisFrame())
+        } else if (_previousItem.WasPressedThisFrame())
         {
             CycleItems(false);
         }
@@ -77,9 +77,31 @@ public class Inventory : MonoBehaviour
 
     private void Pickup(InventoryItem item)
     {
-        DropCurrentItem();
+        bool hasPlace = false;
+        int index = _currentlyHolding;
+
+        if (_items[index] is not null)
+        {
+
+            for (int i = 0; i < _items.Length; i++)
+            {
+                if (_items[i] is null)
+                {
+                    hasPlace = true;
+                    index = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            hasPlace = true;
+        }
+
+        if (!hasPlace) DropCurrentItem(); 
+        
         item.PickUp(handObject);
-        _items[_currentlyHolding] = item;
+        _items[index] = item;
         UpdateDisplay();
     }
 
