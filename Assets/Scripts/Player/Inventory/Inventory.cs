@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     private InputAction _dropItem;
     private InputAction _nextItem;
     private InputAction _previousItem;
+    private InputAction _switchItem;
     
     private InventoryItem[] _items = new InventoryItem[5];
     
@@ -36,11 +37,13 @@ public class Inventory : MonoBehaviour
         _dropItem = InputSystem.actions.FindAction("Drop");
         _nextItem = InputSystem.actions.FindAction("Next");
         _previousItem = InputSystem.actions.FindAction("Previous");
+        _switchItem = InputSystem.actions.FindAction("SwitchItem");
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         RaycastHit hit;
         if (_interact.WasPressedThisFrame())
         {
@@ -57,7 +60,11 @@ public class Inventory : MonoBehaviour
         {
             CycleItems(false);
         }
-        
+
+        if (_switchItem.IsInProgress())
+        {
+            CycleItems(_switchItem.ReadValue<float>() > 0);
+        }
     }
 
     private void CycleItems(bool next = true)

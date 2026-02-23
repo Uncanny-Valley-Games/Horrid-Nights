@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da30b7c2679558eb8679fea566f2c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  maxDistance: 5
+  maxDistance: 2
   inventoryItemLayerMask:
     serializedVersion: 2
     m_Bits: 64
