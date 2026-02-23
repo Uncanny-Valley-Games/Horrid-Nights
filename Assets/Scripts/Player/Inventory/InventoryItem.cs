@@ -15,6 +15,7 @@ public class InventoryItem : MonoBehaviour
     public Collider itemCollider;
 
     private Rigidbody _rb;
+    private MeshRenderer itemRenderer;
     private GameObject _handObject;
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
@@ -28,6 +29,7 @@ public class InventoryItem : MonoBehaviour
     
     private void Start()
     {
+        itemRenderer = GetComponentInChildren<MeshRenderer>();
         _rb = GetComponent<Rigidbody>();
         _rb.isKinematic = true; // starts as a static object, then switches to ridged once dropped
         itemCollider.isTrigger = false;
@@ -76,11 +78,11 @@ public class InventoryItem : MonoBehaviour
 
     public void Equip()
     {
-        gameObject.SetActive(true);
+        itemRenderer.enabled = true;
     }
 
     public void UnEquip()
     {
-        gameObject.SetActive(false);
+        itemRenderer.enabled = false;
     }
 }

@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
     public Transform headTransform;
     public GameObject handObject;
     public InputActionAsset playerInput;
+    public InventoryUI inventoryUI;
+    public InteractHint interactHint;
     
     private InputAction _interact;
     private InputAction _dropItem;
@@ -43,14 +45,17 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         RaycastHit hit;
+
         if (_interact.WasPressedThisFrame())
         {
-            if (Physics.Raycast(headTransform.position, headTransform.forward, out hit, maxDistance, 
-                    inventoryItemLayerMask)) 
+            if (Physics.Raycast(headTransform.position, headTransform.forward, out hit, maxDistance,
+                    inventoryItemLayerMask))
+            {
                 Pickup(hit.transform.GetComponent<InventoryItem>());
-        } else if (_dropItem.WasPressedThisFrame())
+            }
+        }
+        else if (_dropItem.WasPressedThisFrame())
         {
             DropCurrentItem();
         } else if (_nextItem.WasPressedThisFrame())
@@ -80,6 +85,7 @@ public class Inventory : MonoBehaviour
             if (_currentlyHolding < 0) _currentlyHolding = _items.Length - 1;
         }
         UpdateDisplay();
+        inventoryUI.UpdateText(_currentlyHolding);
     }
 
     private void Pickup(InventoryItem item)

@@ -395,6 +395,8 @@ MonoBehaviour:
   headTransform: {fileID: 4440549343363400764}
   handObject: {fileID: 8269105281379292941}
   playerInput: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  inventoryUI: {fileID: 0}
+  interactHint: {fileID: 0}
 --- !u!1 &8190803007793915390
 GameObject:
   m_ObjectHideFlags: 0
