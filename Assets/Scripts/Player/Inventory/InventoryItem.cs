@@ -39,8 +39,8 @@ public class InventoryItem : MonoBehaviour
     {
         if (_handObject is not null)
         {
-            if (transform.position != _handObject.transform.position) transform.position = _handObject.transform.position;
-            if (transform.rotation != _handObject.transform.rotation) transform.rotation = _handObject.transform.rotation;
+            transform.position = _handObject.transform.position;
+            transform.rotation = _handObject.transform.rotation;
         } else if (transform.position.y < -100)
         {
             // when _handObject is null, the object could be a body affected by gravity. to prevent it from falling into
