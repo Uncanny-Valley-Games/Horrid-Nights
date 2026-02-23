@@ -12,9 +12,12 @@ public class Inventory : MonoBehaviour
     
     private InputAction interact;
     private InputAction dropItem;
+    private InputAction nextItem;
+    private InputAction previousItem;
+    
     private InventoryItem[] _items = new InventoryItem[5];
     
-    private int _currentlyHolding = 0;
+    private int _currentlyHolding;
     
     void OnEnable()
     {
@@ -31,22 +34,45 @@ public class Inventory : MonoBehaviour
     {
         interact = InputSystem.actions.FindAction("Interact");
         dropItem = InputSystem.actions.FindAction("Drop");
+        nextItem = InputSystem.actions.FindAction("Next");
+        previousItem = InputSystem.actions.FindAction("Previous");
     }
 
     // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(headTransform.position, headTransform.forward, out hit, maxDistance, 
-                inventoryItemLayerMask) && interact.WasPressedThisFrame())
+        if (interact.WasPressedThisFrame())
         {
-            Pickup(hit.transform.GetComponent<InventoryItem>());
-            Debug.DrawRay(transform.position, headTransform.forward * hit.distance, Color.yellow);
+            if (Physics.Raycast(headTransform.position, headTransform.forward, out hit, maxDistance, 
+                    inventoryItemLayerMask)) 
+                Pickup(hit.transform.GetComponent<InventoryItem>());
         } else if (dropItem.WasPressedThisFrame())
         {
             DropCurrentItem();
+        } else if (nextItem.WasPressedThisFrame())
+        {
+            CycleItems();
+        } else if (previousItem.WasPressedThisFrame())
+        {
+            CycleItems(false);
         }
         
+    }
+
+    private void CycleItems(bool next = true)
+    {
+        if (next)
+        {
+            _currentlyHolding += 1;
+            if (_currentlyHolding >= _items.Length) _currentlyHolding = 0;
+        }
+        else
+        {
+            _currentlyHolding -= 1;
+            if (_currentlyHolding < 0) _currentlyHolding = _items.Length - 1;
+        }
+        UpdateDisplay();
     }
 
     private void Pickup(InventoryItem item)
@@ -64,6 +90,7 @@ public class Inventory : MonoBehaviour
             if (_items[_currentlyHolding].itemName != InventoryItem.ItemName.Nothing)
             {
                 _items[_currentlyHolding].Drop();
+                _items[_currentlyHolding] = null;
             }
         }
     }
