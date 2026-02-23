@@ -15,7 +15,9 @@ public class InventoryItem : MonoBehaviour
     public Collider itemCollider;
 
     private Rigidbody _rb;
-    private GameObject handObject;
+    private GameObject _handObject;
+    private Vector3 _initialPosition;
+    private Quaternion _initialRotation;
     
     private bool _isEquipped;
     
@@ -29,15 +31,29 @@ public class InventoryItem : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _rb.isKinematic = true; // starts as a static object, then switches to ridged once dropped
         itemCollider.isTrigger = false;
+        _initialPosition = transform.position;
+        _initialRotation = transform.rotation;
     }
 
     private void Update()
     {
-        if (handObject is not null)
+        if (_handObject is not null)
         {
-            transform.position = handObject.transform.position;
-            transform.rotation = handObject.transform.rotation;
+            if (transform.position != _handObject.transform.position) transform.position = _handObject.transform.position;
+            if (transform.rotation != _handObject.transform.rotation) transform.rotation = _handObject.transform.rotation;
+        } else if (transform.position.y < -100)
+        {
+            // when _handObject is null, the object could be a body affected by gravity. to prevent it from falling into
+            // the void forever, we have it so it resets the object's transform and state
+            ResetPosAndRot();
         }
+    }
+
+    private void ResetPosAndRot()
+    {
+        transform.position = _initialPosition;
+        transform.rotation = _initialRotation;
+        _rb.isKinematic = true;
     }
 
     public void PickUp(GameObject hand)
@@ -46,7 +62,7 @@ public class InventoryItem : MonoBehaviour
         _rb.isKinematic = true;
         itemCollider.isTrigger = true;
         gameObject.layer = LayerMask.NameToLayer("Default");
-        handObject = hand;
+        _handObject = hand;
     }
 
     public void Drop()
@@ -55,7 +71,7 @@ public class InventoryItem : MonoBehaviour
         _rb.isKinematic = false;
         itemCollider.isTrigger = false;
         gameObject.layer = LayerMask.NameToLayer("Inventory Item");
-        handObject = null;
+        _handObject = null;
     }
 
     public void Equip()
