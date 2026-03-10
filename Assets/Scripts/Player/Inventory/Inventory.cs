@@ -21,6 +21,11 @@ public class Inventory : MonoBehaviour
     private InventoryItem[] _items = new InventoryItem[5];
     
     private int _currentlyHolding;
+
+    public InventoryItem GetCurrentItem()
+    {
+        return _items[_currentlyHolding];
+    }
     
     void OnEnable()
     {
