@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,8 +8,9 @@ public class NailGameInteract : MonoBehaviour
     InputAction interact;
 
     [SerializeField] NailMinigame minigame;
-    [SerializeField] GameObject promptText;
+    [SerializeField] TextMeshProUGUI promptText;
     [SerializeField] GameObject nailGameWidget;
+    [SerializeField] Inventory playerInventory;
 
     bool playerIsNear;
 
@@ -24,7 +26,7 @@ public class NailGameInteract : MonoBehaviour
 
     void Start()
     {
-        promptText.SetActive(false);
+        promptText.text = "";
 
         interact = InputSystem.actions.FindAction("Interact");
     }
@@ -33,21 +35,34 @@ public class NailGameInteract : MonoBehaviour
     {
         if (playerIsNear)
         {
-            // The minigame will only start when the interact key is pressed if the player is next to the window and it's damaged
-            if (interact.WasPressedThisFrame() && GetComponentInParent<WindowBarricade>().GetIsDamaged())
+            // The minigame will only start when the interact key is pressed if the player is next to the window,
+            // it's damaged, and they're holding a hammer
+            if (interact.WasPressedThisFrame() && GetComponentInParent<WindowBarricade>().GetIsDamaged() && IsHoldingHammer())
             {
-                promptText.SetActive(false);
+                promptText.text = "";
                 nailGameWidget.SetActive(true);
                 minigame.BeginMinigame(gameObject);
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
                 Time.timeScale = 0;
             }
+            else if (interact.WasPressedThisFrame() && !IsHoldingHammer())
+            {
+                promptText.text = "Missing a hammer.";
+            }
             else if (interact.WasPressedThisFrame() && !GetComponentInParent<WindowBarricade>().GetIsDamaged())
             {
-                Debug.Log("This window doesn't need to be repaired.");
+                promptText.text = "This window doesn't need to be repaired.";
             }
         }
+    }
+    bool IsHoldingHammer()
+    {
+        if (playerInventory.GetCurrentItem() != null)
+        {
+            return playerInventory.GetCurrentItem().itemName == InventoryItem.ItemName.Hammer;
+        }
+        return false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -55,7 +70,7 @@ public class NailGameInteract : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerIsNear = true;
-            promptText.SetActive(true);
+            promptText.text = "Press 'E' to board up the window";
         }
     }
 
@@ -64,7 +79,7 @@ public class NailGameInteract : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerIsNear = false;
-            promptText.SetActive(false);
+            promptText.text = "";
         }
     }
 }

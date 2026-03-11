@@ -1,14 +1,19 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerFoodAndWater : MonoBehaviour
 {
     PlayerStamina playerStamina;
+    PlayerSanity playerSanity;
+    [SerializeField] Slider hungerThirstSlider;
 
     [SerializeField] float maxHunger = 50f;
     [SerializeField] float maxThirst = 50f;
     float currentHunger;
     float currentThirst;
+    [SerializeField] float hungerRate = 0.5f;
+    [SerializeField] float thirstRate = 0.5f;
 
     float waitTime = 4f;
     float maxStamina;
@@ -17,6 +22,8 @@ public class PlayerFoodAndWater : MonoBehaviour
     void Start()
     {
         playerStamina = GetComponent<PlayerStamina>();
+        playerSanity = GetComponent<PlayerSanity>();
+        hungerThirstSlider.value = 0f;
 
         currentHunger = 0f;
         currentThirst = 0f;
@@ -31,9 +38,10 @@ public class PlayerFoodAndWater : MonoBehaviour
         }
     }
 
+    // The player's sanity affects the rate of hunger and thirst
     void IncreaseHunger()
     {
-        currentHunger += 0.5f;
+        currentHunger += hungerRate * (playerSanity.GetCurrentSanity() / 50f + 1f);
         if (currentHunger > maxHunger)
         {
             currentHunger = maxHunger;
@@ -42,7 +50,7 @@ public class PlayerFoodAndWater : MonoBehaviour
 
     void IncreaseThirst()
     {
-        currentThirst += 0.5f;
+        currentThirst += thirstRate * (playerSanity.GetCurrentSanity() / 50f + 1f);
         if (currentThirst > maxThirst)
         {
             currentThirst = maxThirst;
@@ -75,6 +83,8 @@ public class PlayerFoodAndWater : MonoBehaviour
     {
         // Lowers the player's max stamina based on their hunger and thirst
         maxStamina = playerStamina.GetInitialMaxStamina() - ((currentHunger + currentThirst) / 2);
+        // Updates hunger & thirst slider with current hunger and thirst
+        hungerThirstSlider.value = (currentHunger + currentThirst) / 2;
         playerStamina.SetMaxStamina(maxStamina);
     }
 

@@ -227,7 +227,7 @@ namespace Player.Controls
             else targetDir = Vector3.zero;
 
             float baseSpeed = walkSpeed;
-            if (sprinting && !_isCrouched && playerStamina.GetCurrentStamina() > 0f)
+            if (sprinting && !_isCrouched && playerStamina.GetCurrentStamina() > 0f && _currentSpeed > 0f)
             {
                 baseSpeed *= sprintMultiplier;
                 playerStamina.SetIsSprinting(true);
