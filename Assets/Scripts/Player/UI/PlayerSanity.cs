@@ -4,19 +4,40 @@ using UnityEngine.UI;
 public class PlayerSanity : MonoBehaviour
 {
     [SerializeField] Slider sanitySlider;
+    [SerializeField] Image darkeningImage;
 
     [SerializeField] float maxLimit = 100f;
     float currentSanity;
+
+    Color newColour;
+    float sanityTimer;
+    float sanityInterval = 4f;
+
+    public float GetCurrentSanity()
+    {
+        return currentSanity;
+    }
 
     void Start()
     {
         currentSanity = 0f;
         sanitySlider.value = currentSanity;
+
+        newColour = darkeningImage.color;
     }
 
     void Update()
     {
-        // Will handle any changes when sanity is at certain percentages
+        sanityTimer += Time.deltaTime;
+        if (sanityTimer >= sanityInterval)
+        {
+            LowerSanity(1f);
+            sanityTimer = 0f;
+        }
+
+        // Darkens the screen as the player's sanity increases
+        newColour.a = currentSanity / 200f;
+        darkeningImage.color = newColour;
     }
 
     public void LowerSanity(float amount)

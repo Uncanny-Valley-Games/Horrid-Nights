@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PlayerFoodAndWater : MonoBehaviour
 {
     PlayerStamina playerStamina;
+    PlayerSanity playerSanity;
     [SerializeField] Slider hungerThirstSlider;
 
     [SerializeField] float maxHunger = 50f;
@@ -21,6 +22,7 @@ public class PlayerFoodAndWater : MonoBehaviour
     void Start()
     {
         playerStamina = GetComponent<PlayerStamina>();
+        playerSanity = GetComponent<PlayerSanity>();
         hungerThirstSlider.value = 0f;
 
         currentHunger = 0f;
@@ -36,9 +38,10 @@ public class PlayerFoodAndWater : MonoBehaviour
         }
     }
 
+    // The player's sanity affects the rate of hunger and thirst
     void IncreaseHunger()
     {
-        currentHunger += hungerRate;
+        currentHunger += hungerRate * (playerSanity.GetCurrentSanity() / 50f + 1f);
         if (currentHunger > maxHunger)
         {
             currentHunger = maxHunger;
@@ -47,7 +50,7 @@ public class PlayerFoodAndWater : MonoBehaviour
 
     void IncreaseThirst()
     {
-        currentThirst += thirstRate;
+        currentThirst += thirstRate * (playerSanity.GetCurrentSanity() / 50f + 1f);
         if (currentThirst > maxThirst)
         {
             currentThirst = maxThirst;
