@@ -52,15 +52,21 @@ public class Inventory : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (_interact.WasPressedThisFrame())
+        if (Physics.Raycast(headTransform.position, headTransform.forward, out hit, maxDistance,
+                inventoryItemLayerMask))
         {
-            if (Physics.Raycast(headTransform.position, headTransform.forward, out hit, maxDistance,
-                    inventoryItemLayerMask))
+            interactHint.EnableHint();
+            if (_interact.WasPressedThisFrame())
             {
                 Pickup(hit.transform.GetComponent<InventoryItem>());
             }
         }
-        else if (_dropItem.WasPressedThisFrame())
+        else
+        {
+            interactHint.DisableHint();
+        }
+        
+        if (_dropItem.WasPressedThisFrame())
         {
             DropCurrentItem();
         } else if (_nextItem.WasPressedThisFrame())

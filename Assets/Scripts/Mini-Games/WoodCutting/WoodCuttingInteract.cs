@@ -26,7 +26,7 @@ namespace Mini_Games.WoodCutting
             if (!player) return;
 
             var dist = Vector3.Distance(transform.position, player.position);
-            if (promptUI && !_minigameActive) promptUI.SetActive(dist <= interactRange);
+            if (promptUI && !_minigameActive && IsHoldingAxe()) promptUI.SetActive(dist <= interactRange);
 
             if (dist <= interactRange && Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && IsHoldingAxe())
             {

@@ -78,11 +78,13 @@ public class InventoryItem : MonoBehaviour
 
     public void Equip()
     {
-        itemRenderer.enabled = true;
+        // itemRenderer.enabled = true;
+        gameObject.SetActive(true);
     }
 
     public void UnEquip()
     {
-        itemRenderer.enabled = false;
+        // itemRenderer.enabled = false;
+        gameObject.SetActive(false);
     }
 }
