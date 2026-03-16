@@ -8452,7 +8452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e59bb2302bdbb54d965e65b3a1d28f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9
+      value: -16.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e59bb2302bdbb54d965e65b3a1d28f9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18283,7 +18283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &816786775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18298,7 +18298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishingBarrel
   playerInput: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   promptText: {fileID: 54208887}
-  minDistance: 5
+  minDistance: 3
   playerGameObject: {fileID: 113854360}
   minigameObject: {fileID: 1473083632}
   bait: {fileID: 507589620}
@@ -21166,7 +21166,7 @@ RectTransform:
   m_Father: {fileID: 405259988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.0011825562, y: 0.00025177002}
   m_SizeDelta: {x: 0.0025024, y: 31.830002}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21345,7 +21345,7 @@ RectTransform:
   m_Father: {fileID: 97948499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.0007324219, y: 0}
   m_SizeDelta: {x: -0.00022125244, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25438,7 +25438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1231296304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26107,8 +26107,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1824855865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.000011444092, y: 0}
   m_SizeDelta: {x: 0, y: 34.8626}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -29160,7 +29160,7 @@ RectTransform:
   m_Father: {fileID: 1807056581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.00021362305, y: -0.00025177002}
   m_SizeDelta: {x: -0.000061016995, y: 31.829502}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -31848,6 +31848,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3564997473257850277, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 1494275121}
+    - target: {fileID: 3564997473257850277, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
+      propertyPath: interactHint
+      value: 
+      objectReference: {fileID: 1494275122}
     - target: {fileID: 7380629934141247744, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
       propertyPath: playerStamina
       value: 
