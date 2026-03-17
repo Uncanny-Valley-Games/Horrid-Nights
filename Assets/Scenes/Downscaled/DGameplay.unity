@@ -18503,7 +18503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishingBarrel
   playerInput: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   promptText: {fileID: 54208887}
-  minDistance: 3
+  minDistance: 4
   playerGameObject: {fileID: 113854360}
   minigameObject: {fileID: 1473083632}
   bait: {fileID: 507589620}
@@ -32227,7 +32227,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 113217820905209375, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.922
+      value: 7.97
       objectReference: {fileID: 0}
     - target: {fileID: 113217820905209375, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
       propertyPath: m_LocalPosition.y
@@ -32235,7 +32235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 113217820905209375, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.386
+      value: -8.32
       objectReference: {fileID: 0}
     - target: {fileID: 113217820905209375, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
       propertyPath: m_LocalRotation.w

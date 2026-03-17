@@ -85,7 +85,8 @@ public class FishingBarrel : MonoBehaviour
 
     private void MiniGameLoop()
     {
-        if (_interact.WasPressedThisFrame())
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame
+                        || Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             if (Mathf.Approximately(bait.anchoredPosition.y, baitCaughtYPosition))
             {
