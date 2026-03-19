@@ -23,6 +23,8 @@ public class FishingBarrel : MonoBehaviour
     private bool _bobFlag = true;
     
     private InputAction _interact;
+    
+    private Inventory playerInventory;
 
     private void OnEnable()
     {
@@ -40,6 +42,7 @@ public class FishingBarrel : MonoBehaviour
         _interact = InputSystem.actions.FindAction("Interact");
         promptText.SetActive(false);
         minigameObject.SetActive(false);
+        playerInventory = playerGameObject.GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -47,7 +50,7 @@ public class FishingBarrel : MonoBehaviour
     {
         if (!_minigameStarted)
         {
-            if (_minigameEnded && Vector3.Distance(transform.position, playerGameObject.transform.position) <  minDistance)
+            if (_minigameEnded && IsHoldingRod() && Vector3.Distance(transform.position, playerGameObject.transform.position) <  minDistance)
             {
                 promptText.SetActive(true);
 
@@ -71,9 +74,19 @@ public class FishingBarrel : MonoBehaviour
         }
     }
 
+    private bool IsHoldingRod()
+    {
+        if (playerInventory.GetCurrentItem() != null)
+        {
+            return playerInventory.GetCurrentItem().itemName == InventoryItem.ItemName.FishingRod;
+        }
+        return false;
+    }
+
     private void MiniGameLoop()
     {
-        if (_interact.WasPressedThisFrame())
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame
+                        || Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             if (Mathf.Approximately(bait.anchoredPosition.y, baitCaughtYPosition))
             {
