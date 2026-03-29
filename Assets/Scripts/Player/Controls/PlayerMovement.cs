@@ -92,7 +92,7 @@ namespace Player.Controls
 
         private void Update()
         {
-            if (controller == null) return;
+            if (controller is null) return;
 
             if (Application.isEditor && Keyboard.current != null)
             {
