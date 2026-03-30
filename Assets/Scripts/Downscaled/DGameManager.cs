@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Downscaled
 {
-    public class DGameManager : MonoBehaviour
+    public class DGameManager
     {
         public static bool TimerStarted = false;
 
@@ -18,6 +18,11 @@ namespace Downscaled
             FishingMinigameDone = false;
             TreeCuttingMinigameDone = false;
             NailMinigameDone = false;
+        }
+        
+        public static bool FinishedInitialMiniGames()
+        {
+            return FishingMinigameDone && TreeCuttingMinigameDone;
         }
     }
 }

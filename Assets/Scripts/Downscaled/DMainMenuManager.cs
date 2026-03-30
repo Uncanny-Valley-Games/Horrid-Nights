@@ -5,6 +5,12 @@ namespace Downscaled
 {
     public class DMainMenuManager : MonoBehaviour
     {
+        private void Start()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
         public void SwitchToGameplay()
         {
             DGameManager.ResetVariables();
