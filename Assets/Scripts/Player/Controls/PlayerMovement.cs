@@ -1,3 +1,4 @@
+using Downscaled;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -86,6 +87,8 @@ namespace Player.Controls
                 if (initialPitch > 180f) initialPitch -= 360f;
                 _pitch = initialPitch;
             }
+
+            lookSensitivity = DGameManager.MouseSensitivity;
 
             ApplyCursorLock(true);
         }

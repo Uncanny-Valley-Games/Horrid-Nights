@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace DebugStuff
 {
@@ -10,6 +11,9 @@ namespace DebugStuff
         [SerializeField] private PlayerInput playerInput;
         
         private InputAction debugKey;
+        private InputAction backToMenu;
+        
+        private bool canBackToMenu;
         
         private TextMeshProUGUI _text;
         private SortedDictionary<string, string> _debugData = new SortedDictionary<string, string>();
@@ -26,9 +30,12 @@ namespace DebugStuff
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Start()
         {
+            canBackToMenu = !Application.isEditor;
+            
             _text = GetComponent<TextMeshProUGUI>();
             
             debugKey = playerInput.actions["Debug"];
+            backToMenu = playerInput.actions["Back"];
             
             _debugData.Add("Current FPS", Application.targetFrameRate.ToString());
             _debugData.Add("Target FPS", Application.targetFrameRate.ToString());
@@ -42,6 +49,11 @@ namespace DebugStuff
         // Update is called once per frame
         private void Update()
         {
+            if (backToMenu.WasPressedThisFrame() && canBackToMenu)
+            {
+                SceneManager.LoadScene("DMenu");
+            }
+            
             if (debugKey.WasPressedThisFrame())
             {
                 showDebugText = !showDebugText;

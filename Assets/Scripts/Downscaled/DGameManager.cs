@@ -11,6 +11,8 @@ namespace Downscaled
         public static bool TreeCuttingMinigameDone = false;
     
         public static bool NailMinigameDone = false;
+        
+        public static float MouseSensitivity = 0.5f;
 
         public static void ResetVariables()
         {
