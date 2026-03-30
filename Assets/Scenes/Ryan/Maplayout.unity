@@ -21170,6 +21170,7 @@ MonoBehaviour:
   invertY: 0
   pitchMin: -70
   pitchMax: 80
+  moveSpeed: 100
 --- !u!1001 &1839821505
 PrefabInstance:
   m_ObjectHideFlags: 0

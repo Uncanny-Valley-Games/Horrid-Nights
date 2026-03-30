@@ -13,6 +13,8 @@ namespace DebugStuff
         [SerializeField] private float pitchMin = -70f;
         [SerializeField] private float pitchMax = 80f;
         
+        [SerializeField] private float moveSpeed = 4f;
+        
         private Transform cameraTransform;
         
         private InputAction _moveAction;
@@ -54,6 +56,11 @@ namespace DebugStuff
         private void Update()
         {
             HandleLook();
+            
+            var rawDir = _moveAction?.ReadValue<Vector2>() ?? Vector2.zero;
+
+            transform.position += transform.forward * (moveSpeed * rawDir.y * Time.deltaTime);
+            transform.position += transform.right * (moveSpeed * rawDir.x * Time.deltaTime);
         }
         
         private void ApplyCursorLock(bool locked)
