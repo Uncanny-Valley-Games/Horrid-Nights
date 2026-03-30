@@ -53642,6 +53642,10 @@ PrefabInstance:
       propertyPath: playerStamina
       value: 
       objectReference: {fileID: 1494275119}
+    - target: {fileID: 7380629934141247744, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
+      propertyPath: lookSensitivity
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
