@@ -1,4 +1,5 @@
 using System.Collections;
+using Downscaled;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -91,6 +92,7 @@ public class FishingBarrel : MonoBehaviour
             if (Mathf.Approximately(bait.anchoredPosition.y, baitCaughtYPosition))
             {
                 Debug.Log("BaitCaught"); // todo: change this to affect a global variable for the day
+                DGameManager.FishingMinigameDone = true;
             }
             else
             {

@@ -27325,9 +27325,13 @@ PrefabInstance:
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 1607386043}
+    - target: {fileID: 1630272061017110837, guid: b5aaba7a294f72d4a808b11909f843e5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3735380611412184717, guid: b5aaba7a294f72d4a808b11909f843e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.83
+      value: 41.765
       objectReference: {fileID: 0}
     - target: {fileID: 3735380611412184717, guid: b5aaba7a294f72d4a808b11909f843e5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27335,7 +27339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3735380611412184717, guid: b5aaba7a294f72d4a808b11909f843e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 124.98
+      value: 120.168
       objectReference: {fileID: 0}
     - target: {fileID: 3735380611412184717, guid: b5aaba7a294f72d4a808b11909f843e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68528,10 +68532,10 @@ SceneRoots:
   - {fileID: 1231296307}
   - {fileID: 1090368957}
   - {fileID: 762567713}
-  - {fileID: 758585647}
   - {fileID: 702259706}
   - {fileID: 4154627188222618850}
   - {fileID: 816786779}
   - {fileID: 6939385266299696260}
   - {fileID: 277996125}
   - {fileID: 1200725846}
+  - {fileID: 758585647}
