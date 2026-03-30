@@ -1,15 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DMainMenuManager : MonoBehaviour
+namespace Downscaled
 {
-    public void SwitchToGameplay()
+    public class DMainMenuManager : MonoBehaviour
     {
-        SceneManager.LoadScene("DGameplay");
-    }
+        public void SwitchToGameplay()
+        {
+            DGameManager.ResetVariables();
+            SceneManager.LoadScene("DGameplay");
+        }
 
-    public void ExitGame()
-    {
-        Application.Quit();
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
     }
 }
