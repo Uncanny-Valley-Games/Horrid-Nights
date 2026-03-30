@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Ryan/Maplayout.unity
+    guid: b096d779b512e4ee5b86485fb2425106
   - enabled: 1
     path: Assets/Scenes/Downscaled/DMenu.unity
     guid: 5ca1210f6b98446d49946ce517f4d76a
