@@ -1,3 +1,4 @@
+using Downscaled;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -87,12 +88,14 @@ namespace Player.Controls
                 _pitch = initialPitch;
             }
 
+            lookSensitivity = DGameManager.MouseSensitivity;
+
             ApplyCursorLock(true);
         }
 
         private void Update()
         {
-            if (controller == null) return;
+            if (controller is null) return;
 
             if (Application.isEditor && Keyboard.current != null)
             {

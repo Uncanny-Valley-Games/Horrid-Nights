@@ -1,3 +1,4 @@
+using Downscaled;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -55,6 +56,7 @@ namespace Mini_Games.WoodCutting
 
         public void BreakTree()
         {
+            DGameManager.TreeCuttingMinigameDone = true;
             Destroy(gameObject);
         }
     }

@@ -1,15 +1,34 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class DMainMenuManager : MonoBehaviour
+namespace Downscaled
 {
-    public void SwitchToGameplay()
+    public class DMainMenuManager : MonoBehaviour
     {
-        SceneManager.LoadScene("DGameplay");
-    }
+        [SerializeField] private Slider slider;
+        
+        private void Start()
+        {
+            slider.value = DGameManager.MouseSensitivity;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
+        public void SwitchToGameplay()
+        {
+            DGameManager.ResetVariables();
+            SceneManager.LoadScene("DGameplay");
+        }
 
-    public void ExitGame()
-    {
-        Application.Quit();
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
+        
+        public void UpdateMouseSensitivity()
+        {
+            DGameManager.MouseSensitivity = slider.value;
+        }
     }
 }

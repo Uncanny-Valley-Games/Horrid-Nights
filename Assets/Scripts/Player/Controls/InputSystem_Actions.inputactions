@@ -104,6 +104,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Debug",
+                    "type": "Button",
+                    "id": "58893d51-1b3d-4bf9-82b7-ba4db94b4e4a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "474741e5-83f0-458a-bfc0-52e52e699ced",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -511,6 +529,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "SwitchItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51d8dbd6-a554-4598-baa4-a386a3c92043",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e8cd4eb-4f77-498e-b33b-0240519979cc",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
