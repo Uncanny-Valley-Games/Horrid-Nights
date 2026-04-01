@@ -1,5 +1,6 @@
 using System.Collections;
 using Downscaled;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ public class FishingBarrel : MonoBehaviour
 {
     public InputActionAsset playerInput;
     public GameObject promptText;
+    public TextMeshProUGUI instructionText;
+    public TextMeshProUGUI catchText;
     public float minDistance = 5f;
     public GameObject playerGameObject;
     public GameObject minigameObject;
@@ -92,11 +95,15 @@ public class FishingBarrel : MonoBehaviour
             if (Mathf.Approximately(bait.anchoredPosition.y, baitCaughtYPosition))
             {
                 Debug.Log("BaitCaught"); // todo: change this to affect a global variable for the day
+                catchText.text = "Caught a fish!";
+                StartCoroutine(CatchFeedbackTimer());
                 DGameManager.FishingMinigameDone = true;
             }
             else
             {
                 Debug.Log("BaitNotCaught"); // todo: add some kind of feedback
+                catchText.text = "Didn't catch anything";
+                StartCoroutine(CatchFeedbackTimer());
             }
 
             _minigameEnded = true;
@@ -133,6 +140,12 @@ public class FishingBarrel : MonoBehaviour
         _canBob = true;
     }
 
+    private IEnumerator CatchFeedbackTimer()
+    {
+        yield return new WaitForSeconds(2f);
+        catchText.text = "";
+    }
+
     private void StartMiniGame()
     {
         _minigameStarted = true;
@@ -141,6 +154,7 @@ public class FishingBarrel : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0;
         minigameObject.SetActive(true);
+        instructionText.text = "Left-click to fish";
     }
 
     private void EndMiniGame()
