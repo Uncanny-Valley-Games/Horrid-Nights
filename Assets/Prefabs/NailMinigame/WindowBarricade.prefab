@@ -198,4 +198,4 @@ MonoBehaviour:
   minigame: {fileID: 0}
   promptText: {fileID: 0}
   nailGameWidget: {fileID: 0}
-  inventory: {fileID: 2697962367493232873, guid: 9d9abc4cc8a66b8439f9fad6c9b62567, type: 3}
+  playerInventory: {fileID: 0}
