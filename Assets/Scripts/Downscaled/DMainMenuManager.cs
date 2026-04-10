@@ -7,6 +7,9 @@ namespace Downscaled
     public class DMainMenuManager : MonoBehaviour
     {
         [SerializeField] private Slider slider;
+        [SerializeField] private GameObject[] menuUIs;
+        
+        private int currentMenu = 0;
         
         private void Start()
         {
@@ -29,6 +32,13 @@ namespace Downscaled
         public void UpdateMouseSensitivity()
         {
             DGameManager.MouseSensitivity = slider.value;
+        }
+
+        public void NextButton()
+        {
+            menuUIs[currentMenu].SetActive(false);
+            currentMenu++;
+            menuUIs[currentMenu].SetActive(true);
         }
     }
 }
