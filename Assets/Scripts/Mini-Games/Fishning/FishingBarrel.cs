@@ -92,6 +92,7 @@ public class FishingBarrel : MonoBehaviour
             if (Mathf.Approximately(bait.anchoredPosition.y, baitCaughtYPosition))
             {
                 Debug.Log("BaitCaught"); // todo: change this to affect a global variable for the day
+                DGameManager.FishingMinigameDone = true;
 
                 if (DGameManager.FinishedInitialMiniGames())
                 {
@@ -101,8 +102,6 @@ public class FishingBarrel : MonoBehaviour
                 {
                     UpdatableText.UpdateStatusText("Fish caught! Go cut some wood now.");
                 }
-                
-                DGameManager.FishingMinigameDone = true;
             }
             else
             {
