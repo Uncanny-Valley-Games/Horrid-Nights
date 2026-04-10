@@ -13,8 +13,10 @@ namespace Mini_Games.WoodCutting
         public GameObject promptUI;
         public TMP_Text promptText;
         [SerializeField] Inventory playerInventory;
+        [SerializeField] private GameObject treeItself;
 
         private bool _minigameActive;
+        private bool pastPromptUIState;
 
         private void Start()
         {
@@ -27,12 +29,12 @@ namespace Mini_Games.WoodCutting
             if (!player) return;
 
             var dist = Vector3.Distance(transform.position, player.position);
-            if (promptUI && !_minigameActive && IsHoldingAxe()) promptUI.SetActive(dist <= interactRange);
+            if (promptUI && !_minigameActive && IsHoldingAxe()) TogglePromptUI(dist <= interactRange);
 
             if (dist <= interactRange && Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && IsHoldingAxe())
             {
                 var mg = WoodCuttingMinigame.Instance;
-                promptUI.SetActive(false);
+                TogglePromptUI(false);
                 if (mg)
                 {
                     _minigameActive = true;
@@ -56,8 +58,18 @@ namespace Mini_Games.WoodCutting
 
         public void BreakTree()
         {
+            Destroy(treeItself);
             DGameManager.TreeCuttingMinigameDone = true;
             Destroy(gameObject);
+        }
+
+        private void TogglePromptUI(bool value)
+        {
+            if (pastPromptUIState != value)
+            {
+                pastPromptUIState = value;
+                promptUI.SetActive(value);
+            }
         }
     }
 }
