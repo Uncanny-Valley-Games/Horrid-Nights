@@ -60,6 +60,16 @@ namespace Mini_Games.WoodCutting
         {
             Destroy(treeItself);
             DGameManager.TreeCuttingMinigameDone = true;
+
+            if (DGameManager.FinishedInitialMiniGames())
+            {
+                UpdatableText.UpdateStatusText("You may head home now!");
+            }
+            else
+            {
+                UpdatableText.UpdateStatusText("Enough wood for tonight. Lets go fishing!");
+            }
+            
             Destroy(gameObject);
         }
 

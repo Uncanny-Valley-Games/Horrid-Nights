@@ -8,6 +8,7 @@ namespace Downscaled
         private void Start()
         {
             DGameManager.ResetVariables();
+            UpdatableText.UpdateStatusText("Got to the fire-watch tower.");
         }
 
         private void OnCollisionEnter(Collision other)
