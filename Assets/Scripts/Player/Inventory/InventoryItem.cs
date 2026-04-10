@@ -14,6 +14,8 @@ public class InventoryItem : MonoBehaviour
     public ItemName itemName;
     public Collider itemCollider;
 
+    private bool showedStatusText;
+    
     private Rigidbody _rb;
     private MeshRenderer itemRenderer;
     private GameObject _handObject;
@@ -60,6 +62,12 @@ public class InventoryItem : MonoBehaviour
 
     public void PickUp(GameObject hand)
     {
+        if (!showedStatusText)
+        {
+            showedStatusText = true;
+            if (itemName == ItemName.Axe) UpdatableText.UpdateStatusText("Go cut down some trees!");
+            else if (itemName == ItemName.FishingRod)  UpdatableText.UpdateStatusText("Get to fishing near the barrel!");
+        }
         _isEquipped = true;
         _rb.isKinematic = true;
         itemCollider.isTrigger = true;

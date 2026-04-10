@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Downscaled/DGameplay.unity
     guid: e1be3897584d24123b2158355940f19d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Downscaled/DExplanation.unity
     guid: 85031ca9f28804581a729ad4ea36575f
   - enabled: 1

@@ -93,10 +93,20 @@ public class FishingBarrel : MonoBehaviour
             {
                 Debug.Log("BaitCaught"); // todo: change this to affect a global variable for the day
                 DGameManager.FishingMinigameDone = true;
+
+                if (DGameManager.FinishedInitialMiniGames())
+                {
+                    UpdatableText.UpdateStatusText("You may head home now!");
+                }
+                else
+                {
+                    UpdatableText.UpdateStatusText("Fish caught! Go cut some wood now.");
+                }
             }
             else
             {
                 Debug.Log("BaitNotCaught"); // todo: add some kind of feedback
+                UpdatableText.UpdateStatusText("Fish missed!");
             }
 
             _minigameEnded = true;
